@@ -1,0 +1,36 @@
+﻿@model Project_Dashboard.Models.Client
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nomc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nomc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tele)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tele)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.age)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id_Client">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,12 @@
+﻿#my-div {
+    background-color: #f00;
+    width: 100px;
+    height: 100px;
+}
+
+a.fill-div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}

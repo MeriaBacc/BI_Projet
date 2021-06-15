@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Project_Dashboard.Models.Admin>
+
+
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<link href="~/css/ViewBtn.css" rel="stylesheet" />
+
+<link href="~/css/Box.css" rel="stylesheet" />
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="~/Scripts/chart/highcharts.js"></script>
+<script src="~/Scripts/chart/exporting.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm" href="example.com">
+            <div class="card bg-warning" href="ViewAge.cshtml">
+                <div class="card-body">
+                    <h4 class="card-title"></h4>
+                    <h2 style=" text-align : center  "><a asp-area="" asp-controller="Admins" asp-action="ViewAge">Voir Age</a></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card bg-warning">
+                <div class="card-body">
+                    <h4 class="card-title"></h4>
+                    <h2 style=" text-align : center  "><a asp-area="" asp-controller="Admins" asp-action="ViewCategorie">Voir Catégorie</a></h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card bg-warning">
+                <div class="card-body">
+                    <h3 class="card-title"></h3>
+                    <h6 style="  color: #007bff; text-align: center">ToTale Prix Articles :@ViewBag.Collectiontotaleprix</h6>
+                    <h6 style="  color: #007bff; text-align: center">Revenue :@ViewBag.Collectiontotaleprixfacture</h6>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container p-3 my-3 bg-primary text-white">
+    <figure class="highcharts-figure">
+        <div id="containerx"></div>
+    </figure>
+</div>
+
+<script>
+    Highcharts.chart('containerx', {
+
+        yAxis: {
+            title: {
+                text: 'Number of Employees'
+            }
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Range: 2015 to 2021'
+            }
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 2015
+            }
+        },
+
+        series: [{
+            name: 'Revenue',
+            data: [@Html.Raw(ViewBag.Collection[0]), @Html.Raw(ViewBag.Collection[1]), @Html.Raw(ViewBag.Collection[2]),
+                   @Html.Raw(ViewBag.Collection[0]), @Html.Raw(ViewBag.Collection[1]), @Html.Raw(ViewBag.Collection[2]),
+                   @Html.Raw(ViewBag.Collection[0]) ]
+        }, {
+            name: 'Prix de Stocks',
+                data: [@Html.Raw(ViewBag.Collectionstock[0]) , @Html.Raw(ViewBag.Collectionstock[1]) ,@Html.Raw(ViewBag.Collectionstock[2]),
+                       @Html.Raw(ViewBag.Collectionstock[3]),@Html.Raw(ViewBag.Collectionstock[4]),@Html.Raw(ViewBag.Collectionstock[5]),
+                       @Html.Raw(ViewBag.Collectionstock[6])]
+        }, {
+            name: 'Nombre de Clients',
+            data: [@Html.Raw(ViewBag.Collectionclient[0]), @Html.Raw(ViewBag.Collectionclient[1]), @Html.Raw(ViewBag.Collectionclient[2]),
+                   @Html.Raw(ViewBag.Collectionclient[3]), @Html.Raw(ViewBag.Collectionclient[4]), @Html.Raw(ViewBag.Collectionclient[5]),
+                   @Html.Raw(ViewBag.Collectionclient[6])]
+            }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        },
+        title: {
+            text: ' Statistique, 2021'
+        }
+
+    });
+
+</script>
+
+
+
+
+
+
+
+
+
+

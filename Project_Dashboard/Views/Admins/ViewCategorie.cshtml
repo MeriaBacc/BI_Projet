@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Project_Dashboard.Models.Admin>
+
+
+@{
+    ViewBag.Title = "ViewCategorie";
+}
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<figure class="highcharts-figure">
+    <div id="container1"></div>
+    <p class="highcharts-description">
+        Pie chart showing a hollow semi-circle. This is a compact visualization,
+        often used in dashboards.
+    </p>
+</figure>
+
+@section scripts
+{
+    <script>
+
+        Highcharts.chart('container1', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: ' Catégorie, 2021'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [{
+                    name: 'Electronique',
+                    y: @Html.Raw(ViewBag.Collectioncat[0]),
+                    sliced: true,
+                    selected: true
+                     }, {
+                            name: 'Beaute',
+                            y: @Html.Raw(ViewBag.Collectioncat[1])
+                         }, {
+                            name: 'Maison',
+                            y:@Html.Raw(ViewBag.Collectioncat[2])
+                         }, {
+                            name: 'Surce',
+                            y: @Html.Raw(ViewBag.Collectioncat[3])
+                         }, {
+                            name: 'Laitier',
+                            y: @Html.Raw(ViewBag.Collectioncat[4])
+                        },{
+                            name: 'Autre',
+                            y: 2.61
+                    }]
+            }]
+        });
+
+
+    </script>
+}

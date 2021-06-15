@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Project_Dashboard.Models.Client>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Afficher Clients</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nomc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tele)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_Client">Modifier</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_Client">Détails</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_Client">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

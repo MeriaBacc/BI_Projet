@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Project_Dashboard.Models.Stock>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Afficher Stocks</h1>
+
+<p>
+    <a asp-action="Create">Créer un nouveau</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name_stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix_st)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_stock)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name_stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix_st)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_stock)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id_stock">Modifiert</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_stock">Détals</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_stock">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

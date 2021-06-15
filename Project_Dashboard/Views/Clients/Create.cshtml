@@ -1,0 +1,40 @@
+﻿@model Project_Dashboard.Models.Client
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nomc" class="control-label"></label>
+                <input asp-for="nomc" class="form-control" />
+                <span asp-validation-for="nomc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tele" class="control-label"></label>
+                <input asp-for="tele" class="form-control" />
+                <span asp-validation-for="tele" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" />
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

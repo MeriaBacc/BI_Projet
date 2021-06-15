@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Project_Dashboard.Models.Admin>
+
+@{
+    ViewBag.Title = "ViewAge";
+}
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="~/Scripts/chart/highcharts.js"></script>
+<script src="~/Scripts/chart/exporting.js"></script>
+
+<body>
+
+    <figure class="highcharts-figure">
+        <div id="containerAge"></div>
+    </figure>
+
+
+    <script>
+
+        Highcharts.chart('containerAge', {
+         chart: {
+             plotBackgroundColor: null,
+             plotBorderWidth: 0,
+             plotShadow: false
+         },
+         title: {
+             text: 'Statistique<br>AGE<br>2021',
+             align: 'center',
+             verticalAlign: 'middle',
+             y: 60
+         },
+         tooltip: {
+             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+         },
+         accessibility: {
+             point: {
+                 valueSuffix: '%'
+             }
+         },
+         plotOptions: {
+             pie: {
+                 dataLabels: {
+                     enabled: true,
+                     distance: -50,
+                     style: {
+                         fontWeight: 'bold',
+                         color: 'white'
+                     }
+                 },
+                 startAngle: -90,
+                 endAngle: 90,
+                 center: ['50%', '75%'],
+                 size: '110%'
+             }
+         },
+         series: [{
+             type: 'pie',
+             name: 'Statistique Age',
+             innerSize: '50%',
+             data: [
+                 [' @Html.Raw(ViewBag.Collectionage[0])', @Html.Raw(ViewBag.Collectionintage[0])],
+                 [' @Html.Raw(ViewBag.Collectionage[1])', @Html.Raw(ViewBag.Collectionintage[1])],
+                 [' @Html.Raw(ViewBag.Collectionage[2])', @Html.Raw(ViewBag.Collectionintage[2])],
+                 [' @Html.Raw(ViewBag.Collectionage[3])', @Html.Raw(ViewBag.Collectionintage[3])]
+             ]
+         }]
+     });
+
+    </script>
+
+
+
+
+</body>
